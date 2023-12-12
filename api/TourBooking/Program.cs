@@ -1,7 +1,10 @@
 using AutoMapper;
 using Core;
+using Core.Entity;
 using Core.Interface.Repository;
 using Core.Interface.Service;
+using Core.Validator;
+using FluentValidation;
 using Infraestructure.Data;
 using Infraestructure.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +19,9 @@ builder.Services.AddTransient<IBookingManagerService, BookingManagerService>();
 
 builder.Services.AddScoped<ITourRepository, TourRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+
+builder.Services.AddSingleton<IValidator<Tour>, TourValidator>();
+builder.Services.AddSingleton<IValidator<Booking>, BookingValidator>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {

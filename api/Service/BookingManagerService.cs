@@ -1,6 +1,7 @@
 ﻿using Core.Entity;
 using Core.Interface.Repository;
 using Core.Interface.Service;
+using FluentValidation;
 
 namespace Service
 {
@@ -8,16 +9,26 @@ namespace Service
     {
         private readonly ITourRepository _tourRepository;
         private readonly IBookingRepository _bookingRepository;
+        private readonly IValidator<Tour> _tourValidator;
+        private readonly IValidator<Booking> _bookingValidator;
 
         public BookingManagerService(ITourRepository tourRepository
-            , IBookingRepository bookingRepository)
+            , IBookingRepository bookingRepository
+            , IValidator<Tour> tourValidator
+            , IValidator<Booking> bookingValidator)
         {
             _tourRepository = tourRepository;
             _bookingRepository = bookingRepository;
+            _tourValidator = tourValidator;
+            _bookingValidator = bookingValidator;
         }
 
         public async Task<Tour> CreateTourAsync(Tour tour)
         {
+            var result = _tourValidator.Validate(tour);
+            if (!result.IsValid)
+                throw new ValidationException(result.Errors);
+
             return await _tourRepository.CreateAsync(tour);
         }
 
@@ -28,6 +39,10 @@ namespace Service
 
         public async Task<Booking> BookTourAsync(Booking booking)
         {
+            var result = _bookingValidator.Validate(booking);
+            if (!result.IsValid)
+                throw new ValidationException(result.Errors);
+
             if (booking.TourId >= 0)
                 booking.Tour = null;
 
@@ -41,6 +56,9 @@ namespace Service
 
         public async Task<(bool, string)> RemoveBookingAsync(int bookingId)
         {
+            if (bookingId <= 0)
+                return (false, "La reserva no existe.");
+
             return await _bookingRepository.RemoveAsync(bookingId);
         }
     }
