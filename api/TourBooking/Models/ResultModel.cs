@@ -3,6 +3,6 @@
     public class ResultModel
     {
         public bool Successful { get; set; }
-        public string Message { get; set; } = string.Empty;
+        public List<string>? Messages { get; set; }
     }
 }

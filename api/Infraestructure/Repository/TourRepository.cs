@@ -23,8 +23,31 @@ namespace Infraestructure.Repository
 
         public async Task<List<Tour>> GetAllAsync()
         {
-            var tourList = await _context.Tours.ToListAsync();
+            var tourList = await _context.Tours
+                .Select(x => new Tour()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Destination = x.Destination,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    Price = x.Price,
+                })
+                .OrderBy(x => x.StartDate).ThenBy(x => x.EndDate)
+                .ToListAsync();
             return tourList;
         }
+
+        public async Task<Tour> GetByIdAsync(int id)
+        {
+            var tour = await _context.Tours.FirstOrDefaultAsync(x => x.Id == id);
+            return tour;
+        }
+
+        public async Task<(bool, string)> RemoveAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

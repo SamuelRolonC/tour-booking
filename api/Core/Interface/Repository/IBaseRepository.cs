@@ -6,5 +6,7 @@ namespace Core.Interface.Repository
     {
         Task<T> CreateAsync(T entity);
         Task<List<T>> GetAllAsync();
+        Task<(bool, string)> RemoveAsync(int id);
+        Task<T> GetByIdAsync(int id);
     }
 }

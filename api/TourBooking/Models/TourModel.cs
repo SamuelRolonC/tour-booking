@@ -2,11 +2,11 @@
 {
     public class TourModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Destination { get; set; } = string.Empty;
-        public string StartDate { get; set; } = string.Empty;
-        public string EndDate { get; set; } = string.Empty;
-        public decimal Price { get; set; }
+        public int? Id { get; set; }
+        public string? Name { get; set; }
+        public string? Destination { get; set; }
+        public string? StartDate { get; set; }
+        public string? EndDate { get; set; }
+        public decimal? Price { get; set; }
     }
 }

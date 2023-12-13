@@ -2,6 +2,7 @@ using AutoMapper;
 using Core.Entity;
 using Core.Interface.Service;
 using Core.Utils;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.Models;
 
@@ -33,8 +34,17 @@ namespace TourBooking.Controllers
                 return Ok(new ItemResultModel<BookingModel>()
                 {
                     Successful = true,
-                    Message = string.Empty,
+                    Messages = null,
                     Data = bookingModel
+                });
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new ItemResultModel<BookingModel>()
+                {
+                    Successful = false,
+                    Messages = ex.Errors.Select(x => x.ErrorMessage).ToList(),
+                    Data = null
                 });
             }
             catch (Exception ex)
@@ -44,7 +54,10 @@ namespace TourBooking.Controllers
                 return BadRequest(new ItemResultModel<BookingModel>()
                 {
                     Successful = false,
-                    Message = Functions.ErrorMessageTemplate(uniqueId, "No se pudo crear la reserva. Por favor inténtelo más tarde"),
+                    Messages = new List<string>() 
+                    { 
+                        Functions.ErrorMessageTemplate(uniqueId, "No se pudo crear la reserva. Por favor inténtelo más tarde") 
+                    },
                     Data = null
                 });
             }
@@ -60,7 +73,7 @@ namespace TourBooking.Controllers
                 return Ok(new ListResultModel<BookingModel>()
                 {
                     Successful = true,
-                    Message = string.Empty,
+                    Messages = null,
                     Data = listBookingModel
                 });
             }
@@ -71,7 +84,10 @@ namespace TourBooking.Controllers
                 return BadRequest(new ListResultModel<BookingModel>()
                 {
                     Successful = false,
-                    Message = Functions.ErrorMessageTemplate(uniqueId, "No se pudo obtener la lista de reservas. Por favor inténtelo más tarde"),
+                    Messages = new List<string>()
+                    {
+                        Functions.ErrorMessageTemplate(uniqueId, "No se pudo obtener la lista de reservas. Por favor inténtelo más tarde")
+                    },
                     Data = new List<BookingModel>()
                 });
             }
@@ -86,7 +102,7 @@ namespace TourBooking.Controllers
                 return Ok(new ResultModel()
                 {
                     Successful = success,
-                    Message = message
+                    Messages = new List<string>() { message }
                 });
             }
             catch (Exception ex)
@@ -96,7 +112,10 @@ namespace TourBooking.Controllers
                 return BadRequest(new ResultModel()
                 {
                     Successful = false,
-                    Message = Functions.ErrorMessageTemplate(uniqueId, "No se pudo eliminar la reserva. Por favor inténtelo más tarde"),
+                    Messages = new List<string>()
+                    {
+                        Functions.ErrorMessageTemplate(uniqueId, "No se pudo eliminar la reserva. Por favor inténtelo más tarde")
+                    },
                 });
             };
         }

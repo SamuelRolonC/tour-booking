@@ -2,6 +2,7 @@ using AutoMapper;
 using Core.Entity;
 using Core.Interface.Service;
 using Core.Utils;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.Models;
 
@@ -33,8 +34,17 @@ namespace TourBooking.Controllers
                 return Ok(new ItemResultModel<TourModel>()
                 {
                     Successful = true,
-                    Message = string.Empty,
+                    Messages = null,
                     Data = tourModel
+                });
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new ItemResultModel<TourModel>()
+                {
+                    Successful = false,
+                    Messages = ex.Errors.Select(x => x.ErrorMessage).ToList(),
+                    Data = null
                 });
             }
             catch (Exception ex)
@@ -44,7 +54,10 @@ namespace TourBooking.Controllers
                 return BadRequest(new ItemResultModel<TourModel>()
                 {
                     Successful = true,
-                    Message = Functions.ErrorMessageTemplate(uniqueId, "No se pudo crear el tour. Por favor inténtelo más tarde"),
+                    Messages = new List<string>()
+                    {
+                        Functions.ErrorMessageTemplate(uniqueId, "No se pudo crear el tour. Por favor inténtelo más tarde")
+                    },
                     Data = null
                 });
             }
@@ -60,7 +73,7 @@ namespace TourBooking.Controllers
                 return Ok(new ListResultModel<TourModel>()
                 {
                     Successful = true,
-                    Message = string.Empty,
+                    Messages = null,
                     Data = listTourModel
                 });
             }
@@ -71,7 +84,10 @@ namespace TourBooking.Controllers
                 return BadRequest(new ListResultModel<TourModel>()
                 {
                     Successful = false,
-                    Message = Functions.ErrorMessageTemplate(uniqueId, "No se pudo obtener la lista de tours. Por favor inténtelo más tarde"),
+                    Messages = new List<string>()
+                    {
+                        Functions.ErrorMessageTemplate(uniqueId, "No se pudo obtener la lista de tours. Por favor inténtelo más tarde")
+                    },
                     Data = new List<TourModel>()
                 });
             }

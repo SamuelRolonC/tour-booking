@@ -56,5 +56,10 @@ namespace Infraestructure.Repository
 
             return (true, string.Empty);
         }
+
+        public async Task<Booking> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
