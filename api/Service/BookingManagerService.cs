@@ -39,7 +39,7 @@ namespace Service
 
         public async Task<Booking> BookTourAsync(Booking booking)
         {
-            if (booking.TourId > 0)
+            if (booking?.TourId > 0)
                 booking.Tour = await _tourRepository.GetByIdAsync(booking.TourId);
 
             var result = _bookingValidator.Validate(booking);
