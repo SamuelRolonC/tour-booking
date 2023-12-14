@@ -131,8 +131,15 @@ namespace Test.Service
                 , _tourValidatorMock.Object
                 , _bookingValidatorMock.Object);
 
+            var booking = new Booking()
+            {
+                Customer = string.Empty,
+                Date = new DateTime(2023, 1, 1),
+                TourId = 1
+            };
+
             // Act & Assert
-            await Assert.ThrowsAsync<ValidationException>(() => bookingManagerService.BookTourAsync(It.IsAny<Booking>()));
+            await Assert.ThrowsAsync<ValidationException>(() => bookingManagerService.BookTourAsync(booking));
         }
 
         [Fact]

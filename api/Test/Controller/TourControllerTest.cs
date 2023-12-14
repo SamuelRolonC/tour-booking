@@ -48,7 +48,7 @@ namespace Test.Controller
 
             Assert.NotNull(itemResult);
             Assert.True(itemResult.Successful);
-            Assert.Empty(itemResult.Messages);
+            Assert.Null(itemResult.Messages);
         }
     }
 }

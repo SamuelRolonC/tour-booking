@@ -11,7 +11,7 @@ namespace Test.Utils
         public void ParseDate_StringToDateTime_Valid()
         {
             // Act
-            var date = Functions.ParseDate("13-01-2021");
+            var date = Functions.ParseDate("2021-01-13");
 
             // Assert
             Assert.Equal(new DateTime(2021, 01, 13), date);
@@ -25,7 +25,7 @@ namespace Test.Utils
 
             // Assert
             Assert.NotNull(date);
-            Assert.Equal("13-01-2021", date);
+            Assert.Equal("2021-01-13", date);
         }
 
         [Fact]

@@ -1,5 +1,5 @@
 function useAppParameters() {
-    const apiBaseUrl = 'https://localhost:7052';
+    const apiBaseUrl = 'https://localhost:44353';
 
     const apiTourController = '/tour';
     const apiBookingController = '/booking';
