@@ -1,5 +1,7 @@
+import configData from '../config.json';
+
 function useAppParameters() {
-    const apiBaseUrl = 'https://localhost:7052';
+    const apiBaseUrl = configData.API_URL.replace(/\/+$/, '');
 
     const apiTourController = '/tour';
     const apiBookingController = '/booking';
