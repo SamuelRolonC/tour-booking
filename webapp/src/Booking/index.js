@@ -5,7 +5,7 @@ import { useAppParameters } from "../Utils/useAppParameters";
 
 function Booking() {
     const navigate = useNavigate();
-    const [ formData, setFormData ] = useState({ name: '', destination: '', email: '', startDate: '', endDate: '',price: '' });
+    const [ formData, setFormData ] = useState({ name: '', customer: '', date: '', tourId: '' });
     const [ tourSelectData, setTourSelectData ] = useState([]);
     const [ validation, setValidation ] = useState([]);
     const [ displayValidation, setDisplayValidation ] = useState('none');
@@ -22,6 +22,7 @@ function Booking() {
         .then(response => response.json())
         .then(json => {
             console.log('Success');
+            json.data.unshift({ id: 0, name: 'Seleccionar' });
             setTourSelectData(json.data);
         })
         .catch((error) => {
@@ -47,7 +48,7 @@ function Booking() {
                 id: id,
                 customer: formData.customer,
                 date: formData.date,
-                tourId: formData.tourId,
+                tourId: formData.tourId ? formData.tourId : 0,
             }),
         })
         .then(response => response.json())

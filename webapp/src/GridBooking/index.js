@@ -42,12 +42,11 @@ function GridBooking() {
                 console.log(message);
                 alert(message);
             }
-            return json.successful;
+            navigate(0);
         })
         .catch((error) => {
-            console.error('Error: ', error);
-            alert('Error: ', error);
-            return false;
+            console.error('Server error: ', error);
+            alert('Server error: ', error);
         });
     }
 
@@ -61,7 +60,6 @@ function GridBooking() {
 
     const onClickDeleteBooking = (id) => {
         deleteItem(id);
-        navigate(0);
     }
 
     const onClickTours = () => {
