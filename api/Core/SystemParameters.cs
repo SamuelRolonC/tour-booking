@@ -10,8 +10,8 @@ namespace Core
     {
         public struct DateFormat
         {
-            public const string DDMMYYYY = "dd-MM-yyyy";
-            public const string DDMMYYYYHHMMSS = "dd-MM-yyyy HH:mm:ss";
+            public const string YYYYMMDD = "yyyy-MM-dd";
+            public const string YYYYMMDDHHMMSS = "yyyy-MM-dd HH:mm:ss";
         }
 
         public struct ConnectionString

@@ -12,12 +12,12 @@ namespace Core.Utils
     {
         public static string ParseDate(DateTime? date)
         {
-            return date != null ? date.Value.ToString(SystemParameters.DateFormat.DDMMYYYY, CultureInfo.InvariantCulture) : string.Empty;
+            return date != null ? date.Value.ToString(SystemParameters.DateFormat.YYYYMMDD, CultureInfo.InvariantCulture) : string.Empty;
         }
 
         public static DateTime ParseDate(string date)
         {
-            var isValidDate = DateTime.TryParseExact(date, SystemParameters.DateFormat.DDMMYYYY, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime resultDate);
+            var isValidDate = DateTime.TryParseExact(date, SystemParameters.DateFormat.YYYYMMDD, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime resultDate);
             return isValidDate ? resultDate : DateTime.MinValue;
         }
 
