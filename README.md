@@ -28,7 +28,7 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
     ```
     - Ejecutar la solución en Visual Studio.
 4. Configurar WebApp
-    - Abrir, con un editor de texto, el archivo `.\webapp\src\config.json` y configurar la variable `API_URL` con la url de la API de .Net. Se obtiene de la ventana abierta por Visual Studio al ejecutar la solución.
+    - Abrir el archivo `.\webapp\src\config.json` y configurar la variable `API_URL` con la url de la API de .Net. Se obtiene de la ventana abierta por Visual Studio al ejecutar la solución.
     - Abrir una terminal de cmd o powershell y dirigirse al directorio `webapp`
     ```
     cd [ruta-completa]\webapp
