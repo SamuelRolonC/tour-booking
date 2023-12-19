@@ -24,6 +24,7 @@ namespace Infraestructure.Data.Configuration
                 .HasColumnType("decimal(38, 5)")
                 .HasColumnName("price");
             builder.Property(e => e.StartDate).HasColumnName("startDate");
+            builder.Property(e => e.IsAvailable).HasColumnName("isAvailable");
         }
     }
 }
