@@ -16,7 +16,7 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
 2. Comprobar que el servicio de Windows de su instancia de SQL Server 2019 se esté ejecutando.
 3. Configurar API
     - Abrir el archivo `.\api\TourBooking.sln` de proyecto de la API con Visual Studio.
-    - Abrir el archivo `appsettings.json` en el proyecto web TourBooking y configurar la variable `TourBookingContext` con el conectionsString de la instancia de SQL Server que tenga instalada.
+    - Abrir el archivo `appsettings.json` en el proyecto web TourBooking y configurar la variable `TourBookingContext` con el conectionsString de su instancia de SQL Server.
     - Asegurarse que el proyecto TourBooking sea el `Startup project` y que se ejecute con IIS Express.
     - Ir al menú superior de Visual Studio, `View > Terminal > New Terminal` y ejecutar el siguiente comando: 
     ```
@@ -28,7 +28,7 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
     ```
     - Ejecutar la solución en Visual Studio.
 4. Configurar WebApp
-    - Abrir el archivo `.\webapp\src\config.json` y configurar la variable `API_URL` con la url de la API de .Net. Se obtiene de la ventana abierta por Visual Studio al ejecutar la API.
+    - Abrir, con un editor de texto, el archivo `.\webapp\src\config.json` y configurar la variable `API_URL` con la url de la API de .Net. Se obtiene de la ventana abierta por Visual Studio al ejecutar la solución.
     - Abrir una terminal de cmd o powershell y dirigirse al directorio `webapp`
     ```
     cd [ruta-completa]\webapp
