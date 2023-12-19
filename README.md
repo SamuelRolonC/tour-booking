@@ -13,10 +13,8 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
 ## Configurar y ejecutar la aplicación
 
 1. Clonar o descargar el repositorio.
-2. Crear base de datos
-    - Abrir Microsoft SQL Server Management Studio y conectarse a su instancia de SQL Server.
-    - Ejecutar los scripts de la carpeta `.\db` en el orden del prefijo númerico en el nombre de cada archivo. Esto creará la base de datos 'TourBooking' y sus tablas.
-4. Configurar API
+2. Comprobar que el windows service de su instancia de SQL Server 2019 se esté ejecutando.
+3. Configurar API
     - Abrir el archivo `.\api\TourBooking.sln` de proyecto de la API con Visual Studio.
     - Abrir el archivo `appsettings.json` en el proyecto web TourBooking y configurar la variable `TourBookingContext` con el conectionsString de la instancia de SQL Server que tenga instalada.
     - Asegurarse que el proyecto TourBooking sea el `Startup project` y que se ejecute con IIS Express.
@@ -29,7 +27,7 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
     ./tools/dotnet-ef database update --startup-project .\TourBooking\ --project .\Infraestructure\
     ```
     - Ejecutar la solución en Visual Studio.
-5. Configurar WebApp
+4. Configurar WebApp
     - Abrir el archivo `.\webapp\src\config.json` y configurar la variable `API_URL` con la url de la API de .Net. Se obtiene de la ventana abierta por Visual Studio al ejecutar la API.
     - Abrir una terminal de cmd o powershell y dirigirse al directorio `webapp`
     ```
@@ -43,4 +41,4 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
     ```
     npm start
     ```
-6. Usar la aplicación web.
+5. Usar la aplicación web.
