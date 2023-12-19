@@ -400,3 +400,5 @@ FodyWeavers.xsd
 # Coverage
 coverage.*.xml
 api/Tests/coverage-report/
+
+tools/
