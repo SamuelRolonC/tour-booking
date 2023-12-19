@@ -8,6 +8,7 @@
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public decimal Price { get; set; }
+        public bool IsAvailable { get; set; }
         public List<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }
