@@ -13,7 +13,7 @@ Para ejecutar la aplicación es necesario tener las siguientes herramientas inst
 ## Configurar y ejecutar la aplicación
 
 1. Clonar o descargar el repositorio.
-2. Comprobar que el windows service de su instancia de SQL Server 2019 se esté ejecutando.
+2. Comprobar que el servicio de Windows de su instancia de SQL Server 2019 se esté ejecutando.
 3. Configurar API
     - Abrir el archivo `.\api\TourBooking.sln` de proyecto de la API con Visual Studio.
     - Abrir el archivo `appsettings.json` en el proyecto web TourBooking y configurar la variable `TourBookingContext` con el conectionsString de la instancia de SQL Server que tenga instalada.
